@@ -1,0 +1,24 @@
+{
+    "_id": 1,
+    "vendorOrganization": "Digital Takeoff",
+    "address": {
+        "street": "Somewhere",
+        "city": "Ujjain",
+        "region": "North",
+        "state": "Madhya Pradesh",
+        "pinCode": "456006"
+    },
+    "contact": {
+        "pointOfContact": "Hatim",
+        "landLine": {
+            "code": "0120",
+            "number": "1234567"
+        },
+        "mobile": "9082062503",
+        "email": "digitaltakeoff20@gmail.com"
+    },
+    "services": [
+        "CNC", "VMC", "Laser Cutting", "Plasma Cutting", "Sheet Bending"
+    ],
+    "gstNumber": "07 FFFFF0000B 2 Z 9"
+}

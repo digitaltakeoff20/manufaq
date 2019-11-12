@@ -1,0 +1,22 @@
+{
+  "name": "manufaq",
+  "version": "1.0.0",
+  "description": "Manufaq Backend API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express",
+    "MongoDb",
+    "Mongoose",
+    "Notes"
+  ],
+  "author": "Digital Takeoff",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.4"
+  }
+}
