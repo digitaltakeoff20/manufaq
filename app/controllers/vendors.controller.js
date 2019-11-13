@@ -71,7 +71,7 @@ exports.update = (req, res) => {
     // Validate Request
     if(!req.body.id) {
         return res.status(400).send({
-            message: "Vendors content can not be empty"
+            message: "Vendors content cannot be empty"
         });
     }
 
@@ -88,18 +88,18 @@ exports.update = (req, res) => {
     .then(Vendors => {
         if(!Vendors) {
             return res.status(404).send({
-                message: "Vendors not found with id " + req.params.VendorsId
+                message: "Vendors not found with id " + req.params.vendorId
             });
         }
         res.send(Vendors);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Vendors not found with id " + req.params.VendorsId
+                message: "Vendors not found with id " + req.params.vendorId
             });                
         }
         return res.status(500).send({
-            message: "Error updating Vendors with id " + req.params.VendorsId
+            message: "Error updating Vendors with id " + req.params.vendorId
         });
     });
 
@@ -107,7 +107,7 @@ exports.update = (req, res) => {
 
 // Delete a vendor with the specified vendorId in the request
 exports.delete = (req, res) => {
-    Vendors.findByIdAndRemove(req.params.VendorsId)
+    Vendors.findByIdAndRemove(req.params.vendorId)
     .then(Vendors => {
         if(!Vendors) {
             return res.status(404).send({
