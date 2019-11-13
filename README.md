@@ -2,5 +2,5 @@
 
 ## API Flow
 
-![Backend API Flow](/home/msrivastava/Documents/digitalTakeoff/manufaq/API_Flow.png)
+![Backend API Flow](API_Flow.png)
 
