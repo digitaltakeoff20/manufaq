@@ -1,30 +1,36 @@
 const Vendors = require('../models/vendors.model.js')
 
-// Create and Save a new Note
+// Create and Save a new vendor
 exports.create = (req, res) =>{
-    if(!req.body.content){
-        return res.status(400)send({
+    if(!req.body.id){
+        return res.status(400).send({
             message: "Vendor fields cannot be empty"
         });
     }
-    // Create a Note
-    const Vendors = new Vendors ({
-        title: req.body.title || "Untitled Vendor",
-        content: req.body.content
-    });
-     // Save Note in the database
-    Vendors.save()
-    .then(data => {
-        res.send(data);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while creating the Note."
-        });
-    });
+
+    const vendor = new Vendors({
+        _id: req.body.id,
+        vendorOrganization: req.body.vendorOrganization,
+        address: req.body.address,
+        contact: req.body.contact,
+        isoCertified: req.body.isoCertified,
+        services: req.body.services,
+        gstNumber: req.body.gstNumber
+    })
+
+    vendor.save()
+        .then(data => {
+            res.send(data);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while creating the vendor"
+            })
+        })
+    
 };
 
 
-// Retrieve and return all notes from the database.
+// Retrieve and return all vendors from the database.
 exports.findAll = (req, res) => {
     Vendors.find()
         .sort({_id: 1})
@@ -37,7 +43,7 @@ exports.findAll = (req, res) => {
         })
 };
 
-// Find a single note with a noteId
+// Find a single vendor with a vendorId
 exports.findOne = (req, res) => {
     Vendors.findById(req.params.vendorId)
         .then(vendor => {
@@ -60,19 +66,24 @@ exports.findOne = (req, res) => {
         });
 };
 
-// Update a note identified by the noteId in the request
+// Update a vendor identified by the vendorId in the request
 exports.update = (req, res) => {
     // Validate Request
-    if(!req.body.content) {
+    if(!req.body.id) {
         return res.status(400).send({
             message: "Vendors content can not be empty"
         });
     }
 
-    // Find note and update it with the request body
-    Vendors.findByIdAndUpdate(req.params.VendorsId, {
-        title: req.body.title || "Untitled Vendor",
-        content: req.body.content
+    // Find vendor and update it with the request body
+    Vendors.findByIdAndUpdate(req.params.vendorId, {
+        _id: req.body.id,
+        vendorOrganization: req.body.vendorOrganization,
+        address: req.body.address,
+        contact: req.body.contact,
+        isoCertified: req.body.isoCertified,
+        services: req.body.services,
+        gstNumber: req.body.gstNumber
     }, {new: true})
     .then(Vendors => {
         if(!Vendors) {
@@ -94,7 +105,7 @@ exports.update = (req, res) => {
 
 };
 
-// Delete a note with the specified noteId in the request
+// Delete a vendor with the specified vendorId in the request
 exports.delete = (req, res) => {
     Vendors.findByIdAndRemove(req.params.VendorsId)
     .then(Vendors => {

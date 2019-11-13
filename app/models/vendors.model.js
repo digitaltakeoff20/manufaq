@@ -12,18 +12,13 @@ const vendorSchema = mongoose.Schema({
     },
     contact:{
         pointOfContact: String,
-        landLine: {
-            areaCode: String,
-            number: String,
-        },
-        mobile: String,
-        whatsapp: String,
+        whatsappNum: String,
+        contactNum: String,
         email: String
     },
-    isoCertified: String,
     services: [],
     gstNumber: String,
-    
+    isoCertified: Boolean,
 });
 
 module.exports = mongoose.model('vendors', vendorSchema);
