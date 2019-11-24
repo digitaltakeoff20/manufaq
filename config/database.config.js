@@ -1,3 +1,5 @@
+const config = require('./config.json')
+
 module.exports = {
-    url: 'mongodb+srv://digitalTakeoff:Blastoff@2020@digitaltakeoff-upwke.mongodb.net/manufaq?retryWrites=true&w=majority'
+    url: 'mongodb+srv://'+config.username+':'+config.password+'@'+config.mongoUrl+'?retryWrites=true&w=majority'
 }
